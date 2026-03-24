@@ -1,0 +1,163 @@
+/* -------------------------------------------
+ * Responsive Overrides for POS Application
+ * File: responsive.css
+ * ------------------------------------------- */
+
+
+/* ===========================================
+ * 1. MEDIUM DEVICES (Tablets, max-width: 991.98px)
+ * Applies to standard tablets and smaller desktop views.
+ * At this point, the POS layout often stacks the Product Catalog (left) 
+ * and the Cart (right) vertically.
+ * =========================================== */
+
+@media (max-width: 991.98px) {
+    /* -------------------
+     * POS LAYOUT (Stacking)
+     * ------------------- */
+    
+    /* Reduce overall container padding */
+    .pos-terminal-container {
+        padding: 1rem !important;
+    }
+
+    /* Reduce card rounding and shadow complexity on smaller screens */
+    .card-modern {
+        border-radius: 0.75rem !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* Add vertical space between stacked columns (e.g., between Product Catalog and Cart) */
+    .row > [class*="col-"]:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+
+    /* -------------------
+     * CUSTOMER CARD
+     * ------------------- */
+    
+    /* The customer card should no longer enforce a fixed width, allowing it to span 100% of the parent column. */
+    .customercard {
+        min-width: 100% !important;
+        max-width: 100% !important;
+        /* Increase height/padding slightly since it's now full width */
+        min-height: auto !important;
+        max-height: auto !important;
+    }
+
+    /* -------------------
+     * PRODUCT CATALOG
+     * ------------------- */
+    
+    /* Reduce max width of search/category header elements */
+    .card-header .input-group {
+        max-width: 100%; /* Allows search bar to fill the header */
+    }
+
+    /* Adjust product tile columns for optimal viewing (e.g., 3-4 tiles per row) */
+    /* Assuming product tiles use a Bootstrap column class like col-lg-3 or col-md-4 */
+    /* If you use CSS Grid/Flex for the product container, this might not be strictly necessary, 
+       but we ensure the tiles are reasonably sized. */
+    .product-tile-custom {
+        /* On medium screens, force tiles to be 33.33% or 25% of the width */
+        flex: 0 0 calc(33.333% - 1rem); /* 3 tiles per row with margin */
+        max-width: calc(33.333% - 1rem);
+        margin: 0.5rem; /* Ensure margins between tiles */
+    }
+
+    /* -------------------
+     * CART ITEMS
+     * ------------------- */
+    
+    /* Reduce padding/font size for tight cart rows */
+    .list-group-item.hover-bg-light {
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    /* Scale down the final total */
+    .card-footer .fs-3 {
+        font-size: 1.75rem !important;
+    }
+}
+
+
+/* ===========================================
+ * 2. SMALL DEVICES (Phones, max-width: 575.98px)
+ * Focuses on single-column layouts and maximizing touch area.
+ * =========================================== */
+
+@media (max-width: 575.98px) {
+
+    /* -------------------
+     * POS LAYOUT & CONTAINER
+     * ------------------- */
+     
+    .pos-terminal-container {
+        padding: 0.5rem !important;
+    }
+
+    /* -------------------
+     * PRODUCT CATALOG
+     * ------------------- */
+
+    /* Force product tiles to stack more compactly (2 tiles per row) */
+    .product-tile-custom {
+        flex: 0 0 calc(50% - 0.5rem); /* 2 tiles per row with margin */
+        max-width: calc(50% - 0.5rem);
+        margin: 0.25rem;
+        /* Reduce tile rounding slightly */
+        border-radius: 0.5rem !important;
+    }
+
+    .product-tile-custom .product-image-container {
+        height: 70px !important; /* Reduce image size */
+    }
+    
+    /* Shrink the price bar font */
+    .product-tile-custom>div:last-child {
+        font-size: 1rem;
+        padding: 0.4rem 0.4rem;
+    }
+
+    /* -------------------
+     * CART ITEMS & ACTIONS
+     * ------------------- */
+
+    /* Ensure action buttons in the cart footer span full width */
+    .card-footer .row > [class*="col-"] {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Simplify cart item quantity controls */
+    .list-group-item .form-control[type="number"] {
+        width: 40px !important; /* Smaller input */
+        height: 25px;
+    }
+
+    .list-group-item .btn-pos-action {
+        width: 25px; /* Smaller control buttons */
+        height: 25px;
+        font-size: 0.75rem;
+    }
+    
+    /* Scale down the final total text */
+    .card-footer .fs-3 {
+        font-size: 1.5rem !important;
+    }
+
+    /* -------------------
+     * USER MANAGEMENT TABLE
+     * ------------------- */
+     
+    /* Use overflow-x for the whole table on very small screens */
+    .table-responsive-sm {
+        overflow-x: auto;
+    }
+
+    /* Ensure action buttons/dropdowns in tables don't get too cramped */
+    .table td.text-nowrap .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+}

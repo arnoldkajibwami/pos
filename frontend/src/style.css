@@ -1,0 +1,411 @@
+
+/* Styles for a clean, professional look */
+.navbar-light .navbar-nav .nav-link {
+    color: #495057; /* Darker text for light navbar */
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border-radius: 4px;
+    padding: 8px 15px; /* Increase hit area */
+    margin: 0 5px; /* Separate links slightly */
+}
+
+/* Hover and Active State for Navigation Links */
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: #007bff; /* Primary color on hover */
+    background-color: #e9ecef; /* Light background on hover for visual feedback */
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+/* Style for the custom class applied to nav links (nav-link-custom) */
+.nav-link-custom {
+    /* Use this to override default link color if needed or for extra spacing */
+    letter-spacing: 0.5px;
+}
+
+/* Style for the Navbar Brand */
+.navbar-brand {
+    font-size: 1.5rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+}
+
+/* Style for the 'Signed in as' text for better readability */
+.navbar-text {
+    font-size: 0.9rem;
+    color: #6c757d !important; /* Secondary text color */
+}
+
+/* Ensure icons are aligned and look good */
+.nav-link svg {
+    vertical-align: middle;
+}
+
+
+
+/* Custom CSS for FinalizePaymentModal UX */
+
+/* 1. Highlight the most critical number: Amount Due */
+.payment-due-item {
+    /* Use a very light but noticeable color, e.g., a primary pastel or dark background */
+    background-color: #fcebeb !important; /* Light red/pink to signify 'due' */
+    border-left: 5px solid var(--bs-danger); /* Strong visual cue */
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle shadow for lift */
+}
+
+/* 2. Improve Visual Consistency and Space */
+.card {
+    border-radius: 0.5rem; /* Slightly more rounded corners */
+}
+
+/* 3. Placeholder for when no credit is available */
+.border-dashed {
+    border: 2px dashed #ced4da !important;
+}
+
+/* 4. Emphasize final payment results in the footer */
+.change-pill, .debt-pill {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem !important; /* Slightly larger text */
+}
+
+/* Debt result is very prominent */
+.debt-pill {
+    border: 2px solid var(--bs-danger);
+    background-color: #fff0f0;
+}
+
+/* Change due is clearly positive */
+.change-pill {
+    border: 2px solid var(--bs-success);
+    background-color: #f0fff0;
+}
+
+/* Optional: Make the primary button slightly more appealing */
+.btn-primary.shadow-lg:hover {
+    transform: translateY(-1px);
+    transition: all 0.2s ease-in-out;
+}
+
+
+
+
+/* Main Container and Card */
+.drafts-container {
+    /* Optional: Add some extra padding around the main content */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Enhancing the Card Shadow for a floating, modern look */
+.card.shadow-lg {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border: none; /* Removing default border for a cleaner effect */
+    border-radius: 12px; /* Softly rounded corners */
+}
+
+/* List Group Styling - Replacing the old table look with modern list items */
+.drafts-list-group {
+    border-radius: 0;
+}
+
+.drafts-list-group .draft-item {
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border-left: 5px solid transparent; /* Prepare for a primary color highlight */
+    cursor: pointer;
+}
+
+.drafts-list-group .draft-item:hover {
+    background-color: #f8f9fa; /* Light gray on hover */
+    /* Highlight the left border using Bootstrap's primary color variable */
+    border-left: 5px solid var(--bs-primary, #0d6efd); 
+}
+
+/* Style for text inside the item to be smaller and less prominent */
+.draft-item .text-sm {
+    font-size: 0.85rem;
+}
+
+/* Ensure the total amount stands out */
+.draft-item h4.text-success {
+    font-size: 1.5rem;
+    font-weight: 700 !important;
+    color: #198754; /* Green shade for success/money */
+}
+
+/* Button Improvements: Slightly rounded action buttons */
+.draft-item .btn-outline-primary, 
+.draft-item .btn-outline-secondary, 
+.draft-item .btn-outline-danger {
+    border-radius: 8px; 
+}
+
+/* Waiter Filter Button Look: Emphasize the selected filter */
+.card-header .btn-primary {
+    transform: translateY(-1px);
+    /* Subtle shadow for the active button */
+    box-shadow: 0 2px 4px rgba(13, 110, 253, 0.3);
+}
+
+/* Override for the Merge button to stand out */
+.card-header .btn-warning {
+    color: #343a40; /* Dark text for warning background */
+    font-weight: 600;
+}
+
+
+/* 1. Global POS Wrapper & Layout Reset */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+/* Set the wrapper to fill the viewport height, minus a possible fixed header/navbar */
+.pos-terminal-wrapper {
+    /* Adjust '56px' if you have a fixed Navbar/Header on your main app layout */
+    height: calc(100vh - 56px); 
+    max-width: none; /* Full width */
+    padding: 0;
+    background-color: #e9ecef; /* Slightly darker background for a professional feel */
+}
+
+.pos-product-panel, .pos-cart-panel-col {
+    height: 100%; 
+}
+
+/* 2. Product Panel (Left Side) - Make the product list scrollable */
+.product-grid-scroll-area {
+    /* Height calculation: Total column height - (Header + Alerts + Filters/Search + padding/margins) */
+    /* Adjust '140px' if your header/filters take up a different amount of vertical space */
+    height: calc(100% - 140px); 
+    overflow-y: auto;
+    padding-right: 15px; /* Adds space for the scrollbar */
+}
+
+/* 3. Product Card Styling */
+.product-card {
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    border-radius: 10px; /* Modern rounded corners */
+    overflow: hidden;
+    background-color: white;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--bs-primary); /* Highlight on hover */
+}
+
+.disabled-card {
+    opacity: 0.6;
+    pointer-events: none; /* Disable clicks */
+    background-color: #f1f1f1;
+}
+
+.product-image-container {
+    height: 120px; 
+    overflow: hidden;
+    position: relative;
+    background-color: #f8f9fa; /* Light background for the image area */
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.stock-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.product-title {
+    font-size: 0.95rem;
+    font-weight: 600; /* Bolder title */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+/* 4. Cart Panel (Right Side) - Fixed layout and sticky footer */
+.pos-cart-panel-col {
+    background-color: #ffffff; 
+    /* Ensures the column content fills the flex parent */
+    display: flex;
+    flex-direction: column; 
+}
+
+.cart-items-scroll-area {
+    overflow-y: auto;
+    /* This needs the parent card (in JSX) to be d-flex flex-column and flex-grow-1 is added in the JSX for this div */
+}
+
+/* Make the total/actions footer fixed to the bottom of the Card/Panel */
+.pos-cart-footer-sticky {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Clear separation from the scrollable list */
+}
+
+/* Hide scrollbars for a cleaner look (optional, but modern) */
+.product-grid-scroll-area::-webkit-scrollbar,
+.cart-items-scroll-area::-webkit-scrollbar {
+    width: 0.2em;
+    height: 0.2em;
+}
+
+.product-grid-scroll-area::-webkit-scrollbar-thumb,
+.cart-items-scroll-area::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+
+
+
+/* General styling for a cleaner look */
+body {
+    background-color: #f8f9fa; /* Light grey background for contrast */
+}
+
+/* Custom class for prominent cards */
+.rounded-4 {
+    border-radius: 1rem !important; /* Increase border radius for a softer look */
+}
+
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08) !important; /* Softer, more pronounced shadow */
+}
+
+/* Modern Tabs */
+.modern-tabs .nav-link {
+    color: #495057; /* Darker text for unselected tabs */
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 1rem 1.25rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.modern-tabs .nav-link:hover {
+    color: #0d6efd; /* Primary color on hover */
+    background-color: #f0f8ff; /* Very light background on hover */
+}
+
+.modern-tabs .nav-link.active {
+    color: #0d6efd; /* Primary color for active tab */
+    border-color: #0d6efd; /* Primary color indicator line */
+    background-color: #fff;
+    font-weight: 700;
+}
+
+/* Dashboard Cards Enhancements */
+.dashboard-card .card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.25rem;
+}
+
+.dashboard-card .display-6 {
+    letter-spacing: -0.5px;
+}
+
+/* Accordion Styling */
+.accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 1rem !important;
+}
+
+.accordion-header .accordion-button {
+    background-color: #f8f9fa !important; /* Light background for header */
+    font-weight: bold;
+    color: #212529;
+    border-radius: 1rem 1rem 0 0 !important;
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+    border-radius: 1rem !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #0d6efd !important; /* Active state color */
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+}
+
+/* Table Styling */
+.table.border {
+    border: 1px solid #dee2e6; /* Add a slight border around the entire table */
+    border-radius: 0.5rem;
+    overflow: hidden; /* Ensures rounded corners are applied */
+}
+.table thead tr {
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* 1. Custom Background Colors for Debt/Credit Alerts */
+/* ================================================= */
+
+/* Light danger background for the Adjust Credit Modal and table rows */
+.bg-danger-subtle {
+    background-color: #f8d7da !important; /* Lighter red, common for subtle errors */
+}
+
+/* Light success background for the Adjust Credit Modal */
+.bg-success-subtle {
+    background-color: #d1e7dd !important; /* Lighter green */
+}
+
+/* Light background for table rows when in debt (less harsh than full table-danger) */
+.table-danger-light {
+    --bs-table-bg: #fdf2f2; /* Very light red/pink */
+}
+
+/* ================================================= */
+/* 2. Enhanced Table Row Styling for Debt */
+/* ================================================= */
+
+/* Specific styling for debt rows to clearly mark them */
+.table-danger-light.border-start.border-5.border-danger {
+    /* Use !important to ensure this overrides default table hover/stripe styles if needed */
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Ensure default border is transparent for non-debt rows */
+.border-start.border-5.border-transparent {
+    border-color: transparent !important;
+}
+
+/* ================================================= */
+/* 3. General Styling Improvements */
+/* ================================================= */
+
+/* Refine Card Header Look */
+.card-header.bg-light-subtle {
+    background-color: #f9fbfd !important; /* A very light off-white/blue for a fresh header */
+    border-bottom: 1px solid #e9ecef; /* Subtle divider */
+}
+
+/* Improve badge readability and separation */
+.badge {
+    min-width: 80px; /* Ensure consistency in badge size */
+    padding: 0.5em 0.8em !important;
+}
+
+/* Clean up table hover effect */
+.table > tbody > tr:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transform: translateY(-1px);
+}
+
+

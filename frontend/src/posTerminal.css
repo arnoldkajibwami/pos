@@ -1,0 +1,369 @@
+/* -------------------------------------------
+ * 1. GLOBAL LAYOUT & UTILITIES
+ * ------------------------------------------- */
+
+/* Set up a clean, modern canvas for the entire POS application */
+.pos-terminal-container {
+    padding: 2rem !important;
+    background-color: #f8f9fa;
+    /* Very light, soft background */
+    min-height: 100vh;
+}
+
+/* Base Card Styling: Uniform depth and highly rounded corners */
+.card-modern {
+    border: none;
+    border-radius: 1.25rem !important;
+    /* Consistent, deep rounding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* Stronger but softer shadow */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Action Buttons (Applies to +/-, Vider, Sélectionner, etc.) */
+.btn-pos-action {
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.15s ease-out;
+}
+
+.btn-pos-action:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------------------------------
+ * 2. CUSTOMER PANEL (Top Right)
+ * ------------------------------------------- */
+
+/* Client Info Card: Highlighted and concise */
+.customercard {
+    /* Use the same rounded style as the main cards */
+    border-radius: 0.9rem !important;
+    padding: 1rem 1.5rem !important;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--bs-danger) !important;
+    /* Strong primary accent */
+    align-items: center;
+
+    min-width: 300px !important;
+    max-width: 300px !important;
+    min-height: 45px !important;
+    max-height: 45px !important;
+}
+
+/* -------------------------------------------
+ * 3. PRODUCT CATALOG (Left)
+ * ------------------------------------------- */
+
+/* Product Card Header: Cleaned up search and category layout */
+.card-header .input-group {
+    max-width: 300px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.card-header .form-control,
+.card-header .input-group-text {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Semi-transparent in primary background */
+    color: white;
+}
+
+.card-header .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Category Buttons: Sleek and clear */
+.card-header .btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.card-header .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Product Tiles (Visual Interaction) */
+.product-tile-custom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    background-color: #ffffff;
+    /* Match card rounding but slightly smaller */
+    border-radius: 0.75rem !important;
+    border: 1px solid var(--bs-light) !important;
+    /* Light separator */
+}
+
+.product-tile-custom:not(.disabled-tile):hover {
+    transform: scale(1.03);
+    /* More pronounced lift */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    /* Stronger elevation */
+    border-color: var(--bs-primary) !important;
+}
+
+.product-tile-custom .product-image-container {
+    height: 90px !important;
+    /* Increased height for visual appeal */
+}
+
+/* Price Bar: Highly legible and distinct */
+.product-tile-custom>div:last-child {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0.5rem 0.5rem;
+}
+
+/* Disabled/Out-of-Stock Tile */
+.product-tile-custom.disabled-tile {
+    opacity: 0.6;
+    background-color: #fef5f5;
+    /* Very light background for disabled */
+    cursor: not-allowed;
+    border: 1px dashed var(--bs-danger) !important;
+}
+
+/* Scrollbar Style for Product Grid */
+.card-body.d-flex.flex-wrap {
+    /* Use the existing class structure for targeted styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--bs-primary) var(--bs-light);
+}
+
+.card-body.d-flex.flex-wrap::-webkit-scrollbar {
+    width: 8px;
+}
+
+.card-body.d-flex.flex-wrap::-webkit-scrollbar-thumb {
+    background-color: var(--bs-primary);
+    border-radius: 4px;
+}
+
+.card-body.d-flex.flex-wrap::-webkit-scrollbar-thumb:hover {
+    background-color: var(--bs-primary-dark);
+}
+
+/* -------------------------------------------
+ * 4. CART PANEL (Right)
+ * ------------------------------------------- */
+
+/* Cart Header */
+.card-header.bg-light.border-bottom {
+    background-color: #f4f7f9 !important;
+    /* Match overall background */
+}
+
+/* List Group Enhancements */
+.list-group {
+    border-radius: 0.75rem !important;
+}
+
+.list-group-item.hover-bg-light {
+    border-left: none;
+    border-right: none;
+    padding: 0.75rem 1rem !important;
+}
+
+.list-group-item.hover-bg-light:hover {
+    background-color: #f7f7ff !important;
+    /* Subtle hover color */
+}
+
+/* Quantity Input Styling */
+.list-group-item .form-control[type="number"] {
+    /* Target the quantity input */
+    text-align: center;
+    font-weight: 700;
+    /* Use a fixed, smaller width for tight controls */
+    width: 50px !important;
+    padding: 0.25rem 0.1rem !important;
+    border-radius: 0.5rem !important;
+    border: 1px solid var(--bs-gray-400);
+    transition: border-color 0.2s;
+    height: 30px;
+    /* Consistent height with buttons */
+}
+
+.list-group-item .form-control[type="number"]:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Quantity Control Buttons (+ / -) */
+.list-group-item .btn-pos-action {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 0.5rem;
+}
+
+/* Cart Footer and Total */
+.card-footer {
+    border-top: 1px solid var(--bs-gray-300);
+    /* Clear separation for the total */
+}
+
+.card-footer .fs-3 {
+    font-size: 2rem !important;
+}
+
+.card-footer .text-success {
+    font-weight: 800;
+    /* Extra bold total price */
+}
+
+/* Primary Action Button (PAYER) */
+.btn-success {
+    background-color: var(--bs-success) !important;
+    border-color: var(--bs-success) !important;
+}
+
+.btn-success:hover {
+    background-color: #198754 !important;
+    /* Slightly darker on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(25, 135, 84, 0.35) !important;
+    /* Stronger success shadow */
+}
+
+/* Secondary Action Button (Draft) */
+.btn-outline-primary {
+    border-width: 2px;
+}
+
+/* -------------------------------------------
+ * 5. TOAST NOTIFICATIONS (Professional Look)
+ * ------------------------------------------- */
+
+/* Standard Toast Container positioning */
+.toast-container {
+    padding-right: 1.5rem !important;
+    padding-top: 1.5rem !important;
+}
+
+/* Modern Toast Card Style */
+.toast {
+    border-radius: 0.75rem !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    /* Stronger shadow */
+    transition: transform 0.3s ease-out;
+}
+
+/* Error Toast Accent (Red border-start) */
+.toast.border-start.border-danger {
+    border-color: var(--bs-danger) !important;
+}
+
+/* Success Toast Accent (Green border-start) */
+.toast.border-start.border-success {
+    border-color: var(--bs-success) !important;
+}
+
+.toast-header {
+    background-color: transparent !important;
+    border-bottom: none !important;
+}
+
+/* Hide receipt content on screen */
+.receipt-wrapper.screen-hide {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/*
+=====================================
+User Management Component Styling
+=====================================
+*/
+
+/* --- General Component Look --- */
+.card-modern {
+    /* Slightly less intense shadow for a lift effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important; 
+    border-radius: 12px;
+    overflow: hidden; /* Ensures stripes/hover effects stay within card */
+}
+
+/* --- Action Buttons (For visual consistency across the app) --- */
+.btn-pos-action {
+    /* Consistent size and feel for main action buttons */
+    min-width: 150px; /* Ensures buttons don't shrink too much */
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Enhancing the danger button for the reset points action */
+.btn-pos-action.btn-outline-danger {
+    color: #dc3545; /* Bootstrap Red */
+    border-color: #dc3545;
+    background-color: transparent;
+}
+.btn-pos-action.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+/* --- Table Specific Styling --- */
+
+/* Customize Table Header to stand out */
+.table-primary {
+    background-color: #007bff !important; /* Primary blue */
+    color: white;
+}
+.table-primary th {
+    /* Apply some padding for better spacing in header */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-weight: 600; /* Semi-bold */
+    letter-spacing: 0.5px;
+}
+
+/* Customize Table Body Rows */
+.table tbody tr td {
+    padding: 0.75rem 1rem; /* Consistent cell padding */
+    vertical-align: middle;
+}
+.table tbody tr:hover {
+    background-color: #f8f9fa; /* Light grey on hover for better feedback */
+}
+
+/* Make badges look professional */
+.badge {
+    padding: 0.4em 0.8em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.375rem; /* Standard rounded corners */
+}
+
+/* Fix for the Role Dropdown in the Actions Column */
+.table td .dropdown-toggle {
+    /* Match the size of the delete button for visual harmony */
+    padding: 0.375rem 0.75rem; 
+    font-size: 0.875rem; /* Smaller font for better fit */
+}
+
+/* Ensure actions column doesn't wrap */
+.table td.text-nowrap {
+    white-space: nowrap;
+}

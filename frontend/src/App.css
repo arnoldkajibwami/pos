@@ -1,0 +1,466 @@
+/* --- 1. Root Variables & Basic Resets --- */
+:root {
+    /* Brand Colors - Adjusted for better contrast and depth */
+    --primary-color: #C00000;
+    /* Richer Red/Maroon */
+    --secondary-color: #2c3e50;
+    /* Darker Navy/Charcoal for depth */
+    --accent-color: #f39c12;
+    /* Richer Amber/Orange for alerts */
+    --success-color: #27ae60;
+    /* Professional Green */
+    --danger-color: #e74c3c;
+    /* Alerting Red */
+    --light-bg: #ecf0f1;
+    /* Very Light Grey/Off-White (App Background) */
+    --pos-bg: #ffffff;
+    /* Pure White (Main POS Panel Background) */
+    --text-color: #34495e;
+    /* Standard Text */
+    --border-color: #bdc3c7;
+    /* Light grey border for structure */
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2.5rem;
+
+    /* Box Shadows - Enhanced for depth and separation */
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Standard card lift */
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+    /* For Modals/Sticky elements */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* --- 2. Typography and Components --- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    /* Slightly bolder headings */
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.btn {
+    transition: all 0.15s ease-in-out;
+    border-radius: 6px;
+    /* Uniform rounded corners */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #A00000;
+    /* Matched hover to original primary */
+    border-color: #A00000;
+    transform: translateY(-1px);
+    /* Subtle press effect */
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-warning {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+    /* Ensure text is visible on the amber background */
+}
+
+.card {
+    border-radius: 10px;
+    /* More modern, softer corners */
+    border: 1px solid var(--border-color);
+    /* Subtle border for definition */
+    box-shadow: var(--shadow-md);
+}
+
+/* --- 3. POS Terminal Specific Styles (UI/UX) --- */
+
+.pos-terminal-container {
+    padding: var(--spacing-md);
+    padding-top: 0px;
+}
+
+/* Layout and Header */
+.pos-terminal-container h1 {
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+/* --- POS: Product Catalog Panel --- */
+.product-catalog-panel {
+    background-color: var(--pos-bg);
+    border-radius: 10px;
+}
+
+.product-list {
+    padding: var(--spacing-xs);
+}
+
+/* --- POS: Product Card UX (Tap Targets) --- */
+.product-tile {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--border-color);
+    height: fit-content;
+    user-select: none;
+    /* Prevent text selection on tap */
+}
+
+.product-tile:hover {
+    transform: translateY(-3px);
+    /* Stronger lift */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.product-tile h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    height: 2.8rem;
+    /* Ensure space for two lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.25rem !important;
+}
+
+.product-tile p {
+    font-size: 1.1rem;
+    /* Larger price text for emphasis */
+    font-weight: 700;
+}
+
+/* --- POS: Cart and Summary Panel --- */
+.cart-summary-panel {
+    background-color: var(--pos-bg);
+    border-radius: 10px;
+}
+
+.list-group-item {
+    border-color: var(--border-color);
+}
+
+/* Cart Item Styling for Clarity */
+.list-group-item.d-flex {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+}
+
+.list-group-item small {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Quantity Controls (Better Tap Targets) */
+.d-flex .btn-sm {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.d-flex .mx-2 {
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Total Display Footer */
+.card-footer {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: #fcfcfc;
+    border-top: 1px solid var(--border-color);
+}
+
+.card-footer h4 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+}
+
+.card-footer .text-success {
+    color: var(--success-color) !important;
+}
+
+/* --- POS: Action Buttons (Large Tap Targets) --- */
+.d-grid button {
+    font-size: 1.1rem;
+    padding: 1rem 0.75rem;
+    font-weight: 600;
+}
+
+/* --- 5. Responsiveness for POS (Tablet/Desktop) --- */
+@media (max-width: 992px) {
+
+    /* Tablet/Medium Screens */
+    .product-tile h6 {
+        font-size: 0.9rem;
+    }
+
+    .product-tile p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Mobile Screens */
+    .pos-terminal-container {
+        padding: var(--spacing-sm);
+    }
+
+    .d-grid button {
+        font-size: 1rem;
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+
+/* ======================================= */
+/* FINAL PRINT CSS OVERRIDE (For App.css) */
+/* ======================================= */
+
+/* Ensures receipt content is hidden on screen by default */
+#print-receipt-content,
+#print-draft-receipt-content {
+    display: none;
+}
+
+.hero-section {
+    background-image: url(./images/01.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    height: 80vh !important;
+}
+
+
+@media print {
+
+    /* Hide the entire application interface except for the receipt content */
+    /* This targets direct children of the body that are not the receipt containers */
+    body>div:not(#print-receipt-content):not(#print-draft-receipt-content) {
+        display: none !important;
+    }
+
+    /* Make the receipt content visible and position it correctly for printing */
+    #print-receipt-content,
+    #print-draft-receipt-content {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: auto !important;
+        height: auto !important;
+        margin: 0;
+        padding: 0;
+        /* Ensures the receipt always starts on a new page if the user decides to print again */
+        page-break-after: always; 
+    }
+    
+    /* Removed the conflicting .receipt-wrapper rule inside @media print */
+}
+
+
+/* Styling for the Products Container */
+.pos-terminal-container .card-body {
+    display: grid;
+    /* Updated grid minmax to 140px */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    /* Reduced gap */
+    padding: 1rem;
+}
+
+/* Base style for the new tile */
+.product-tile-custom {
+    /* Existing style from JSX: transition: 'transform 0.2s, box-shadow 0.2s' */
+    border: none !important;
+    /* Remove default bootstrap border */
+    border-radius: 0.75rem !important;
+    /* Slightly more rounded corners */
+}
+
+/* Hover Effect: Lifts the card and changes the shadow */
+.product-tile-custom:hover {
+    transform: translateY(-3px);
+    /* Lifts the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    /* Enhanced shadow */
+    cursor: pointer;
+}
+
+/* Image Container to ensure the image sits nicely */
+.product-image-container {
+    background-color: #f8f9fa;
+    /* Light background behind the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title Truncation Improvement (if not already handled by Bootstrap) */
+.product-tile-custom h6 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-truncate {
+    height: 25px !important;
+}
+
+/* ===========================================
+ * Lock Screen & Transition Styles
+ * =========================================== */
+
+/* -------------------
+ * Full Screen Overlay (Lock Screen Container)
+ * ------------------- */
+.lock-screen-overlay {
+    /* Ensures it covers the entire viewport */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Subtle background blur or light gray for separation */
+    background-color: rgba(248, 249, 250, 0.95); /* Light gray with slight transparency */
+    backdrop-filter: blur(4px); /* Modern touch: slightly blur the content underneath */
+    z-index: 1080; /* Needs to be higher than the Navbar (Bootstrap default z-index is around 1040-1070) */
+    
+    /* Centering content using flex */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Transition for a smooth fade-in when the lock state changes */
+    opacity: 1; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* -------------------
+ * Lock Card Styling
+ * ------------------- */
+.lock-screen-card {
+    /* Use the same modern card base for consistency */
+    border-radius: 1.25rem !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Stronger shadow to lift it off the background */
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    
+    /* Animation: Subtle rise and scale on appearance */
+    animation: lockCardAppear 0.4s ease-out;
+}
+
+@keyframes lockCardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* -------------------
+ * Loading State (Unlocking)
+ * ------------------- */
+
+/* Style for the button during the unlocking process */
+.lock-screen-card button[disabled] {
+    opacity: 0.8;
+    cursor: default;
+}
+
+/* Spinning Icon Customization (if needed, though Bootstrap's is usually fine) */
+.lock-screen-card .spinner-border {
+    color: #fff; /* Ensure spinner is visible against button color */
+}
+
+/* Custom icon styling for the Lock icon */
+.lock-screen-card .lucide-lock {
+    color: var(--bs-warning); /* Match the warning button color */
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* Simple pulsating animation for the lock icon */
+.lock-screen-card .lucide-lock.pulsing {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.ingredient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+  border-left: 4px solid #ffc107 !important;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.bg-light-primary { background: #e7f1ff; }
+.bg-light-success { background: #e6fcf5; }
+.bg-light-warning { background: #fff9db; }
+
+.portal-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.portal-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12) !important;
+}

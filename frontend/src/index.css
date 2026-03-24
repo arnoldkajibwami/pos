@@ -1,0 +1,473 @@
+/* --- 1. Root Variables & Basic Resets (Combined) --- */
+:root {
+    /* POS BRAND COLORS (Red Theme) */
+    --primary-color: #C00000;
+    --secondary-color: #2c3e50;
+    --accent-color: #f39c12;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+
+    /* RESTAURANT BRAND COLORS (Green Theme) */
+    --primary-resto: #4CAF50;
+    /* Deep Green */
+    --secondary-accent: #FFC107;
+    /* Golden Yellow */
+    --text-dark: #2c3e50;
+    --text-light: #f8f9fa;
+    --font-family-base: 'Inter', sans-serif;
+
+    /* POS UI Colors */
+    --light-bg: #ecf0f1;
+    /* Very Light Grey/Off-White (App Background) */
+    --pos-bg: #ffffff;
+    /* Pure White (Main POS Panel Background) */
+    --text-color: #34495e;
+    /* Standard Text */
+    --border-color: #bdc3c7;
+    /* Light grey border for structure */
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2.5rem;
+
+    /* Box Shadows - Enhanced for depth and separation */
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-base);
+    color: var(--text-dark);
+    background-color: #f4f6f8;
+    line-height: 1.5;
+}
+
+/* --- 2. Typography and Global Components --- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.btn {
+    transition: all 0.15s ease-in-out;
+    border-radius: 6px;
+}
+
+/* Base Primary Button (Red Theme) */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #A00000;
+    border-color: #A00000;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-warning {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+/* Restaurant Primary Button (Green Theme) */
+.btn-primary-resto {
+    background-color: var(--primary-resto);
+    border-color: var(--primary-resto);
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-primary-resto:hover {
+    background-color: #388E3C;
+    /* Darker green on hover */
+    border-color: #388E3C;
+}
+
+/* Modern Card Style */
+.modern-card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+}
+
+
+/* --- 3. Hero Section Styling (Restaurant Landing) --- */
+.hero-section {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    overflow: hidden;
+    /* Inherited styles for image from original CSS */
+    background-image: url(./images/01.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 80vh !important;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+    /* Override for visibility */
+}
+
+/* --- 4. POS Terminal Specific Styles (UI/UX) --- */
+
+.pos-terminal-container {
+    padding: var(--spacing-md);
+    padding-top: 0px;
+}
+
+/* POS: Layout and Header */
+.pos-terminal-container h1 {
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+/* POS: Card Lift and Modern Border */
+.card-modern {
+    /* Use a stronger shadow for that "lifted" dashboard feel */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 1rem !important;
+    /* Slightly more rounded corners */
+}
+
+/* POS: Product Catalog Panel */
+.product-catalog-panel {
+    background-color: var(--pos-bg);
+    border-radius: 10px;
+}
+
+.product-list {
+    padding: var(--spacing-xs);
+}
+
+/* POS: Product Card UX (Tap Targets) */
+.product-tile {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--border-color);
+    height: fit-content;
+    user-select: none;
+}
+
+.product-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.product-tile h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    height: 2.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.25rem !important;
+}
+
+.product-tile p {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* POS: Cart and Summary Panel */
+.cart-summary-panel {
+    background-color: var(--pos-bg);
+    border-radius: 10px;
+}
+
+.list-group-item {
+    border-color: var(--border-color);
+}
+
+/* POS: Cart Item Styling for Clarity */
+.list-group-item.d-flex {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+}
+
+.list-group-item small {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* POS: Quantity Controls */
+.d-flex .btn-sm {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.d-flex .mx-2 {
+    min-width: 30px;
+    text-align: center;
+}
+
+/* POS: Total Display Footer */
+.card-footer {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: #fcfcfc;
+    border-top: 1px solid var(--border-color);
+}
+
+.card-footer h4 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+}
+
+.card-footer .text-success {
+    color: var(--success-color) !important;
+}
+
+/* POS: Action Buttons (Large Tap Targets) */
+.d-grid button {
+    font-size: 1.1rem;
+    padding: 1rem 0.75rem;
+    font-weight: 600;
+}
+
+/* POS: Product Container Grid */
+.pos-terminal-container .card-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+/* POS: Product Tile Animations (Primary Interactive Element) */
+.product-tile-custom {
+    border: none !important;
+    border-radius: 0.75rem !important;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.product-tile-custom:not(.opacity-50):hover {
+    transform: scale(1.03);
+    /* Subtle scale on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
+    cursor: pointer;
+}
+
+.product-tile-custom:not(.opacity-50):active {
+    transform: scale(0.98);
+    /* Slight press effect on click */
+}
+
+/* POS: Image Container */
+.product-image-container {
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* POS: Title Truncation Improvement */
+.product-tile-custom h6 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-truncate {
+    height: 25px !important;
+}
+
+/* POS: General Action Button Animation */
+.btn-pos-action {
+    transition: all 0.15s ease-in-out;
+    letter-spacing: 0.5px;
+}
+
+.btn-pos-action:hover {
+    /* Subtle vertical lift on hover */
+    transform: translateY(-1px);
+}
+
+.btn-pos-action:active {
+    /* Press down effect */
+    transform: translateY(1px);
+}
+
+/* POS: Category Filter Button */
+.btn-modern-category {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-modern-category:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+/* POS: Cart List Item Hover */
+.hover-bg-light:hover {
+    background-color: #f1f1f1;
+    /* Light gray hover on list items */
+}
+
+/* --- 5. Global Styles --- */
+
+/* Icon Styles */
+.commitment-icon {
+    color: var(--primary-resto);
+    transition: color 0.3s;
+}
+
+.commitment-card:hover .commitment-icon {
+    color: var(--secondary-accent);
+}
+
+/* Image Placeholder for Modern Look */
+.image-placeholder {
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Modern Nav Links */
+.nav-link-modern {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-link-modern:hover {
+    background-color: #f8f9fa;
+    /* Light gray background on hover */
+    border-radius: 4px;
+    color: #007bff !important;
+    /* Assuming a blue primary color for navigation contrast */
+}
+
+.nav-link-modern.active {
+    border-bottom: 3px solid #007bff;
+    /* Primary color active indicator */
+}
+
+/* --- 6. Responsiveness for POS (Tablet/Desktop) --- */
+@media (max-width: 992px) {
+
+    /* Tablet/Medium Screens */
+    .product-tile h6 {
+        font-size: 0.9rem;
+    }
+
+    .product-tile p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Mobile Screens */
+    .pos-terminal-container {
+        padding: var(--spacing-sm);
+    }
+
+    .d-grid button {
+        font-size: 1rem;
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+
+/* ======================================= */
+/* FINAL PRINT CSS OVERRIDE (For App.css) */
+/* ======================================= */
+
+/* Ensures receipt content is hidden on screen by default */
+#print-receipt-content,
+#print-draft-receipt-content {
+    display: none;
+}
+
+@media print {
+
+    /* Hide the entire application interface except for the receipt content */
+    body>div:not(#print-receipt-content):not(#print-draft-receipt-content) {
+        display: none !important;
+    }
+
+    /* Make the receipt content visible and position it correctly for printing */
+    #print-receipt-content,
+    #print-draft-receipt-content {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: auto !important;
+        height: auto !important;
+        margin: 0;
+        padding: 0;
+        /* Ensures the receipt always starts on a new page if the user decides to print again */
+        page-break-after: always;
+    }
+}
